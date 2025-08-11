@@ -23,8 +23,12 @@ from telegram import InlineKeyboardButton,InlineKeyboardMarkup
 from telegram.ext import CallbackQueryHandler
 from telegram.constants import ParseMode
 
+from dotenv import load_dotenv
+import os
 
 from movie_info import MovieByImdb, MovieInfo
+
+load_dotenv()
 
 # Define a few command handlers. These usually take the two arguments update and
 # context.
@@ -99,7 +103,7 @@ Plot:
 def main() -> None:
     """Start the bot."""
     # Create the Application and pass it your bot's token.
-    TOKEN = "7085362036:AAEul6gY9YGuNzFiGeli_CDcfrGV2gXsk1g"
+    TOKEN = os.getenv('TOKEN')
     application = Application.builder().token(TOKEN).build()
 
     # on different commands - answer in Telegram
